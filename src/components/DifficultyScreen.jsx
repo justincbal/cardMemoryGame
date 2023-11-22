@@ -2,7 +2,11 @@ import "../styles/DifficultyScreen.css";
 
 // Display instructions on left and select difficulty on right
 
-export default function DifficultyScreen() {
+export default function DifficultyScreen(props) {
+  const handleClick = (event) => {
+    props.setDifficulty(event.target.textContent);
+  };
+
   return (
     <div className="difficultyScreen">
       <div className="gridItem">
@@ -19,9 +23,27 @@ export default function DifficultyScreen() {
       </div>
       <div className="gridItem">
         <h1>Select a difficulty</h1>
-        <button className="difficultyButton" type="button">Easy</button>
-        <button className="difficultyButton" type="button">Medium</button>
-        <button className="difficultyButton" type="button">Hard</button>
+        <button
+          className="difficultyButton"
+          type="button"
+          onClick={(e) => handleClick(e)}
+        >
+          Easy
+        </button>
+        <button
+          className="difficultyButton"
+          type="button"
+          onClick={(e) => handleClick(e)}
+        >
+          Medium
+        </button>
+        <button
+          className="difficultyButton"
+          type="button"
+          onClick={(e) => handleClick(e)}
+        >
+          Hard
+        </button>
       </div>
     </div>
   );

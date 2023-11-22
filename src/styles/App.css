@@ -24,4 +24,18 @@ html, body, #root {
   height: 100%;
   width: 100%;
   padding: 5rem 10rem;
+}
+
+.playBorder {
+  background-color: white;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem;
+}
+.playBorder:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=App.css.map */

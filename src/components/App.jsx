@@ -18,18 +18,37 @@ PSEUDOCODE HOW APP RUNS:
 
 */
 
-import { useState } from 'react'
-import '../styles/App.css'
-import DifficultyScreen from './DifficultyScreen';
-
+import { useState, useRef } from "react";
+import "../styles/App.css";
+import DifficultyScreen from "./DifficultyScreen";
 
 export default function App() {
+  const [difficulty, setDifficulty] = useState("");
+  const [image, setImage] = useState("/src/assets/mute.svg");
+  // Audio
+  const audioClick = () => {
+    const music = document.getElementById('audio');
+    music.volume = 0.1;
+    
+    if (image == "/src/assets/mute.svg") {
+      setImage("/src/assets/play.svg");
+      music.play();
+    } else {
+      music.pause();
+      setImage("/src/assets/mute.svg");
+    }
+  };
 
-    const [difficulty, setDifficulty] = useState('');
+  return (
+    
+    <div className="page">
+      <audio loop id="audio"> <source src="/src/assets/pokeLofi.mp3" type="audio/mp3"/></audio>
+      <div className="playBorder" onClick={audioClick}>
+        <img src={image} alt="" className="play" />
+      </div>
 
-    return (
-        <div className='page'>
-            <DifficultyScreen />
-        </div>
-    )
+      <DifficultyScreen difficulty={difficulty} setDifficulty={setDifficulty} />
+      {console.log(difficulty)}
+    </div>
+  );
 }
